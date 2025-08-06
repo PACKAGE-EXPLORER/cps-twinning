@@ -1,29 +1,20 @@
-name: SonarQube Analysis (v0.0.2)
+name: SonarCloud Scan
 
 on:
   push:
-    tags:
-      - 'v0.0.2'
+    branches:
+      - analyze-v0.0.2
 
 jobs:
-  sonarQube:
-    name: SonarQube Scan
+  sonarscan:
+    name: SonarCloud Scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
         with:
-          python-version: '3.8'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@v2
+          projectBaseDir: .
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://sonarcloud.io
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKENN }}
