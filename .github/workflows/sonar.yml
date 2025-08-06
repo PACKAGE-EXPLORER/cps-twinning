@@ -29,5 +29,5 @@ jobs:
           SONAR_PROJECT_KEY: PACKAGE-EXPLORER_cps-twinning
           SONAR_ORGANIZATION: PACKAGE-EXPLORER
 
-:wq
+
 
